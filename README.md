@@ -4,7 +4,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Platform: Linux/macOS](https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey)](https://github.com/yourusername/term-stat)
 
-![Demo](Demo.png)
+![Demo](demo.png)
 
 Красивый и легкий системный монитор для терминала. Показывает использование CPU, RAM, Disk и Network в реальном времени с поддержкой тем оформления.
 
