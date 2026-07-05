@@ -21,18 +21,14 @@ git clone https://github.com/yourusername/term-stat.git
 cd term-stat
 pip install -r requirements.txt
 pip install -e .
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 
 📖 Использование
 Запуск монитора:
 
 term-stat
 
-Выбор темы:
-term-stat --theme cyberpunk
-
-Показать только CPU и RAM:
-
-term-stat --metrics cpu,ram
 
 🛠️ Разработка
 Проект использует rich для красивого вывода и psutil для сбора метрик.
