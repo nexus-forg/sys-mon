@@ -36,3 +36,4 @@ term-stat
 📝 License
 MIT License. См. LICENSE
 
+![Demo](Demo.png)
