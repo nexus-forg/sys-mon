@@ -13,6 +13,9 @@ class SystemMonitor:
         cpu_percent = psutil.cpu_percent(interval=0.5)
         ram = psutil.virtual_memory()
         disk = psutil.disk_usage('/')
+        net = psutil.net_io_counters()
+        net_sent = net.bytes_sent / (1024 * 1024) 
+        net_recv = net.bytes_recv / (1024 * 1024)
         
         return {
             'cpu_pct': cpu_percent,
@@ -21,6 +24,8 @@ class SystemMonitor:
             'ram_used': f"{ram.used / (1024**3):.1f}/{ram.total / (1024**3):.1f} GB",
             'disk_used': f"{disk.used / (1024**3):.1f}/{disk.total / (1024**3):.1f} GB",
             'cpu_cores': psutil.cpu_count()
+            'net_sent': f"{net_sent:.1f} MB",
+            'net_recv': f"{net_recv:.1f} MB"
         }
 
     def create_bar(self, percent, color="green"):
@@ -40,7 +45,8 @@ class SystemMonitor:
         table.add_row("RAM", m['ram_used'], self.create_bar(m['ram_pct'], "yellow"))
         table.add_row("Disk", m['disk_used'], self.create_bar(m['disk_pct'], "blue"))
         table.add_row("Cores", str(m['cpu_cores']), "")
-
+        table.add_row("Net (Up)", m['net_sent'], "")
+        table.add_row("Net (Down)", m['net_recv'], "")
         return Panel(table, title="[bold magenta]🖥️ Term-Stat v0.1[/bold magenta]", border_style="bright_blue")
 
     def run(self):
